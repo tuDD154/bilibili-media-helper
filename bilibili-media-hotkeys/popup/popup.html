@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>B站全局媒体控制</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <img class="logo" src="../icons/icon48.png" width="38" height="38" alt="">
+      <div class="hero-text">
+        <h1>B站全局媒体控制</h1>
+        <p>游戏前台也能用 · 不抢焦点</p>
+      </div>
+    </header>
+
+    <main>
+      <section class="status-card" aria-live="polite">
+        <div class="status-line">
+          <span class="dot" id="status-dot"></span>
+          <span class="status-text" id="status-text">正在查找B站视频…</span>
+          <span class="tab-count" id="tab-count"></span>
+        </div>
+        <div class="video-title" id="video-title">—</div>
+        <div class="progress-row">
+          <span class="time" id="time-now">0:00</span>
+          <div class="progress" aria-hidden="true"><div class="bar" id="progress-bar"></div></div>
+          <span class="time" id="time-total">0:00</span>
+        </div>
+      </section>
+
+      <section class="controls" aria-label="视频控制">
+        <button class="ctrl" type="button" data-action="back" title="快退">
+          <svg class="ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M11 19 4 12l7-7"></path>
+            <path d="m20 19-7-7 7-7"></path>
+          </svg>
+          <span class="ctrl-label">快退</span>
+          <small class="ctrl-sub" id="back-seconds">3 秒</small>
+        </button>
+
+        <button class="ctrl ctrl-primary" type="button" data-action="toggle" title="播放 / 暂停">
+          <svg class="ctrl-icon" id="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M8 5.5v13a1 1 0 0 0 1.53.85l10-6.5a1 1 0 0 0 0-1.7l-10-6.5A1 1 0 0 0 8 5.5Z"></path>
+          </svg>
+          <svg class="ctrl-icon" id="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden>
+            <rect x="6" y="5" width="4" height="14" rx="1.2"></rect>
+            <rect x="14" y="5" width="4" height="14" rx="1.2"></rect>
+          </svg>
+          <span class="ctrl-label" id="toggle-label">播放 / 暂停</span>
+          <small class="ctrl-sub">全局键</small>
+        </button>
+
+        <button class="ctrl" type="button" data-action="forward" title="快进">
+          <svg class="ctrl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m13 5 7 7-7 7"></path>
+            <path d="m4 5 7 7-7 7"></path>
+          </svg>
+          <span class="ctrl-label">快进</span>
+          <small class="ctrl-sub" id="forward-seconds">3 秒</small>
+        </button>
+      </section>
+
+      <p class="hint" id="hint">先打开B站攻略视频，并手动点一次播放。</p>
+
+      <section class="shortcuts">
+        <div class="section-head">
+          <h2>全局快捷键</h2>
+          <button class="text-button" type="button" id="open-shortcuts">修改</button>
+        </div>
+        <div class="shortcut-row">
+          <span>播放 / 暂停</span>
+          <kbd id="key-toggle">—</kbd>
+        </div>
+        <div class="shortcut-row">
+          <span>快退</span>
+          <kbd id="key-back">—</kbd>
+        </div>
+        <div class="shortcut-row">
+          <span>快进</span>
+          <kbd id="key-forward">—</kbd>
+        </div>
+        <p class="shortcut-warning" id="shortcut-warning" hidden>有快捷键未注册，请点“修改”重新设置。</p>
+      </section>
+
+      <footer class="footer-actions">
+        <button class="text-button" type="button" id="open-options">设置</button>
+        <span>仅在B站标签页生效</span>
+      </footer>
+    </main>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

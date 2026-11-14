@@ -1,0 +1,70 @@
+{
+  "manifest_version": 3,
+  "name": "B站全局媒体控制",
+  "short_name": "B站媒体控制",
+  "version": "1.0.0",
+  "description": "游戏在前台时，用全局快捷键控制B站网页视频：播放/暂停、快退3秒、快进3秒，不抢游戏焦点。",
+  "minimum_chrome_version": "102",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": [
+    "*://*.bilibili.com/*",
+    "*://bilibili.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "B站全局媒体控制",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "commands": {
+    "toggle-play": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+1"
+      },
+      "description": "播放 / 暂停B站视频",
+      "global": true
+    },
+    "seek-backward": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+2"
+      },
+      "description": "B站视频快退3秒",
+      "global": true
+    },
+    "seek-forward": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+3"
+      },
+      "description": "B站视频快进3秒",
+      "global": true
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.bilibili.com/*",
+        "*://bilibili.com/*"
+      ],
+      "js": ["content/player-core.js", "content/content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}

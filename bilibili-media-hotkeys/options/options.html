@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>设置 · B站全局媒体控制</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="page">
+    <header class="page-header">
+      <div class="brand">
+        <img src="../icons/icon48.png" width="44" height="44" alt="">
+        <div>
+          <h1>B站全局媒体控制</h1>
+          <p>设置与快捷键</p>
+        </div>
+      </div>
+      <span class="version" id="version">v1.0.0</span>
+    </header>
+
+    <main>
+      <section class="card">
+        <div class="card-head">
+          <h2>播放设置</h2>
+          <p>调整快进 / 快退的步长。</p>
+        </div>
+
+        <form id="settings-form">
+          <div class="field">
+            <div class="field-text">
+              <label for="seek-step">快进 / 快退步长</label>
+              <p>默认 3 秒，范围 1–30 秒。</p>
+            </div>
+            <div class="stepper">
+              <input id="seek-step" name="seek-step" type="number" min="1" max="30" step="1" value="3" inputmode="numeric">
+              <span>秒</span>
+            </div>
+          </div>
+
+          <div class="preset-row" aria-label="常用步长">
+            <button type="button" data-step="1">1 秒</button>
+            <button type="button" data-step="3" class="active">3 秒</button>
+            <button type="button" data-step="5">5 秒</button>
+            <button type="button" data-step="10">10 秒</button>
+          </div>
+
+          <label class="switch-row" for="show-toast">
+            <span class="switch-text">
+              <strong>显示页面提示</strong>
+              <span>控制成功时，在B站页面顶部短暂显示状态。</span>
+            </span>
+            <input id="show-toast" type="checkbox" checked>
+            <span class="switch" aria-hidden="true"></span>
+          </label>
+
+          <div class="form-actions">
+            <button class="primary-button" type="submit">保存设置</button>
+            <span class="save-status" id="save-status" role="status"></span>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="card-head with-action">
+          <div>
+            <h2>全局快捷键</h2>
+            <p>浏览器在后台、游戏在前台时也有效，不会抢走焦点。</p>
+          </div>
+          <button class="secondary-button" type="button" id="open-shortcuts">修改快捷键</button>
+        </div>
+        <div class="shortcut-list" id="shortcut-list"></div>
+        <div class="note">
+          如果快捷键没有反应，通常是被其他软件占用了。请点“修改快捷键”，在浏览器设置里换一个组合。
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-head">
+          <h2>使用方法</h2>
+        </div>
+        <ol class="steps">
+          <li>在浏览器打开B站攻略视频，<strong>先手动点一次播放</strong>。</li>
+          <li>切回原神，让游戏保持前台。</li>
+          <li>按快捷键：播放 / 暂停、快退、快进，不会切出游戏。</li>
+          <li>如果刚安装扩展时B站页面已经开着，刷新一次该页面即可。</li>
+        </ol>
+        <div class="tip">
+          <strong>建议：</strong>保留默认的 <kbd>Ctrl + Shift + 数字</kbd>，不容易和原神的按键冲突。
+        </div>
+      </section>
+
+      <section class="card subtle">
+        <h2>隐私说明</h2>
+        <p>扩展不联网、不上传任何数据，只读取B站标签页里的视频状态与标题，用来执行播放控制。</p>
+      </section>
+    </main>
+  </div>
+  <script src="options.js"></script>
+</body>
+</html>
