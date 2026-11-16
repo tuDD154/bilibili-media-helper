@@ -1,4 +1,4 @@
-# B站跟视频助手（Bilibili Media Helper）
+# 自用B站跟视频助手（Bilibili Media Helper） 使用AI制作，方便原神跟视频使用
 
 一个 Windows 桌面小工具：内置 B 站浏览器窗口，在《原神》保持前台时，用全局快捷键控制攻略视频的播放、暂停、快退和快进，不抢游戏焦点。
 
